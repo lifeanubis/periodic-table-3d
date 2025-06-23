@@ -1,14 +1,13 @@
 import { OrbitControls } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef, useMemo, useCallback, useEffect, useState } from 'react';
-import { colorsBlue } from '../utils/colorConstants';
+import { useTheme } from '../theme/ThemeContext';
 
-function OrbitingSpheres({ selectedElement }) {
+function OrbitingSpheres({ selectedElement, theme }) {
   const redRefs = useRef([]);
   const [orbits, setOrbits] = useState();
   const neucleus = useRef([]);
 
-  // Shared geometry and material for red spheres
   const electronGeometry = useMemo(
     () => <sphereGeometry args={[0.1, 32, 32]} />,
     [],
@@ -16,15 +15,13 @@ function OrbitingSpheres({ selectedElement }) {
   const electronMaterial = useMemo(
     () => (
       <meshStandardMaterial
-        color={colorsBlue.primary}
-        emissive={colorsBlue.primary}
+        color={theme.text_2}
+        emissive={theme.text_2}
         emissiveIntensity={2}
       />
     ),
-    [],
+    [theme],
   );
-
-  // Ring geometry for orbit outline
 
   // Animate the red spheres in orbit
   let tempo = 0;
@@ -45,8 +42,13 @@ function OrbitingSpheres({ selectedElement }) {
         const ref = redRefs.current[i + tempo];
         const refNucleus = neucleus.current[i + tempo];
 
-        if (ref) {
-          const angle = (2 * Math.PI * i) / element + t;
+        // if (selectedElement.id > 20 && refNucleus && ref) {
+        //   refNucleus.scale.set(0.5, 0.5, 0.5);
+        //   ref.scale.set(0.5, 0.5, 0.5);
+        // }
+
+        if (ref && refNucleus) {
+          const angle = (2 * Math.PI * i) / element + t / 4;
           ref.position.x = Math.cos(angle) * radius;
           ref.position.y = Math.sin(angle) * radius;
           refNucleus.position.x = Math.cos(angle) * 0.3;
@@ -97,23 +99,17 @@ function OrbitingSpheres({ selectedElement }) {
   }, [selectedElement.id]);
 
   return (
-    <group>
-      {/* Blue central sphere */}
+    <group scale={selectedElement.id > 36 ? 0.8 : 1}>
+      {/* Blue/Green/Gold central sphere */}
       {Array.from({ length: selectedElement.id }).map((_, i) => (
-        <mesh
-          ref={(el) => (neucleus.current[i] = el)}
-          position={[
-            Math.cos((2 * Math.PI * i) / selectedElement.id) * 0.3,
-            Math.sin((2 * Math.PI * i) / selectedElement.id) * 0.3,
-            0,
-          ]}
-        >
+        <mesh ref={(el) => (neucleus.current[i] = el)} position={[0, 0, 0]}>
           <sphereGeometry args={[0.7, 32, 32]} />
-          <meshBasicMaterial color={i % 2 === 0 ? 'blue' : 'green'} />
+          <meshBasicMaterial
+            color={i % 2 === 0 ? theme.cellBG_7 : theme.text_3}
+          />
         </mesh>
       ))}
-
-      {/* Red orbiting spheres using shared geometry/material */}
+      {/* Glowing orbiting spheres */}
       {Array.from({ length: selectedElement.id }).map((_, i) =>
         orbitDetails(i),
       )}
@@ -122,8 +118,8 @@ function OrbitingSpheres({ selectedElement }) {
         return (
           <mesh key={index} position={[0, 0, 2]}>
             <meshStandardMaterial
-              color={colorsBlue.accent}
-              emissive={colorsBlue.accent}
+              color={theme.text_2}
+              emissive={theme.text_2}
               emissiveIntensity={0.2}
             />
             <ringGeometry args={[radius - 0.02, radius + 0.02, 64]} />

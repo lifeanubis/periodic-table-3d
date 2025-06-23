@@ -3,11 +3,11 @@ import { Text, OrbitControls, MeshPortalMaterial } from '@react-three/drei';
 import { useState } from 'react';
 import OrbitingSpheres from './OrbitScene';
 import * as THREE from 'three';
-import { colorsBlue } from '../utils/colorConstants';
+import { useTheme } from '../theme/ThemeContext';
 
-function Card({ position, children }) {
-  const cardBG = colorsBlue.background;
-  const cardTextTop = colorsBlue.accent;
+function Card({ position, children, theme }) {
+  const cardBG = theme.background;
+  const cardTextTop = theme.text_3;
 
   return (
     <group position={position}>
@@ -86,15 +86,15 @@ function Card({ position, children }) {
   );
 }
 
-export default function CardScene({ selectedElement }) {
+export default function CardScene({ selectedElement, theme }) {
   return (
     <Canvas camera={{ position: [0, 0, 14], fov: 40, near: 5, far: 1000 }}>
-      <color args={[colorsBlue.background]} />
+      {/* <color args={[theme.background]} /> */}
 
       <ambientLight intensity={0.5} />
       <pointLight position={[0.1, 1, 1]} intensity={0.1} />
-      <Card position={[0, 0, -0.5]}>
-        <OrbitingSpheres selectedElement={selectedElement} />
+      <Card position={[0, 0, -0.5]} theme={theme}>
+        <OrbitingSpheres selectedElement={selectedElement} theme={theme} />
       </Card>
       <OrbitControls enableRotate={true} />
     </Canvas>
