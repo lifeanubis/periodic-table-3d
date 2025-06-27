@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { data } from '../utils/data.full';
 import CardScene from './CardScene';
 import OrbitScene from './OrbitScene';
 import { useTheme } from '../theme/ThemeContext';
 
-const PeriodicTableFull = () => {
+const PeriodicTableFull = ({ setElementState }) => {
   const [selectedElement, setSelectedElement] = useState(data[0]);
   const { theme, setTheme } = useTheme();
+  const [marker, setMarker] = useState(0.2);
 
   const cellTextTop = theme.text_3;
   const cellTextBottom = theme.text_2;
@@ -49,34 +50,61 @@ const PeriodicTableFull = () => {
     </div>
   );
 
+  useEffect(() => {
+    setElementState(selectedElement.state);
+
+    return () => {
+      setElementState('gas');
+    };
+  }, [selectedElement]);
+
   return (
     <div className="h-screen p-4  flex flex-col gap-4 items-center justify-center  w-screen">
-      <div className="mb-4">
-        <button
-          onClick={() => setTheme('blue')}
-          className="mx-2 px-2 py-1 rounded bg-blue-200"
-        >
-          Blue
-        </button>
-        <button
-          onClick={() => setTheme('green')}
-          className="mx-2 px-2 py-1 rounded bg-green-200"
-        >
-          Green
-        </button>
-        <button
-          onClick={() => setTheme('gold')}
-          className="mx-2 px-2 py-1 rounded bg-yellow-200"
-        >
-          Gold
-        </button>
+      <div className="absolute  top-2   justify-start w-full">
+        <div>
+          <button
+            onClick={() => {
+              setTheme('blue');
+              setMarker(0.2);
+            }}
+            className="mx-2 px-2 h-5 w-5 py-1 rounded-full bg-blue-200"
+          ></button>
+          <button
+            onClick={() => {
+              setTheme('green');
+              setMarker(2.5);
+            }}
+            className="mx-2 px-2 h-5 w-5 py-1 rounded-full bg-green-200"
+          ></button>
+          <button
+            onClick={() => {
+              setTheme('gold');
+              setMarker(4.5);
+            }}
+            className="mx-2 px-2 h-5 w-5 py-1 rounded-full bg-yellow-200"
+          ></button>
+        </div>
+        <div>
+          <div className=" text-white text-2xl w-28 border-gray-300 my-2">
+            <div
+              style={{
+                transform: `translateX(${marker}rem)`,
+                transition: 'all 0.5s ease-in-out',
+              }}
+            >
+              👆
+            </div>
+            <hr />
+          </div>
+        </div>
+
+        <div>
+          <h1 className="text-lg h-72 w-1/2   font-bold text-center absolute left-52 top-0 ">
+            <CardScene selectedElement={selectedElement} theme={theme} />
+          </h1>
+        </div>
       </div>
-      <div>
-        <h1 className="text-3xl w-screen h-80  font-bold text-center  -mb-20 ">
-          <CardScene selectedElement={selectedElement} theme={theme} />
-        </h1>
-      </div>
-      <div className="mt-16 my-4  p-4 gap-10  overflow-y-auto ">
+      <div className="mt-6  p-4 gap-5  overflow-y-auto   ">
         <div id="row-1" className={` flex w-full justify-between gap-2 `}>
           {Array.from({ length: 2 }, (_, rowIndex) => (
             <div
@@ -176,7 +204,7 @@ const PeriodicTableFull = () => {
             ))}
           </div>
         </div>
-        <div id="row-4" className={` flex w-full justify-between  gap-2 `}>
+        <div id="row-5" className={` flex w-full justify-between  gap-2 `}>
           <div className="flex gap-2">
             {Array.from({ length: 18 }, (_, rowIndex) => (
               <div
@@ -193,6 +221,78 @@ const PeriodicTableFull = () => {
             ))}
           </div>
         </div>
+
+        <div id="row-6" className={` flex w-full justify-between  gap-2 `}>
+          <div className="flex gap-2">
+            {Array.from({ length: 3 }, (_, rowIndex) => (
+              <div
+                onClick={() => setSelectedElement(data[rowIndex + 54])}
+                className="min-w-[4.5rem] max-w-[4.5rem] "
+                key={rowIndex}
+              >
+                {renderCell(
+                  data[rowIndex + 54].element,
+                  data[rowIndex + 54].name,
+                  data[rowIndex + 54].classification,
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="flex gap-2">
+            {Array.from({ length: 15 }, (_, rowIndex) => (
+              <div
+                className="min-w-[4.5rem] max-w-[4.5rem] "
+                onClick={() => setSelectedElement(data[rowIndex + 71])}
+                key={rowIndex}
+              >
+                {renderCell(
+                  data[rowIndex + 71].element,
+                  data[rowIndex + 71].name,
+                  data[rowIndex + 71].classification,
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/*  */}
+
+        <div id="row-down-1" className={` flex w-full justify-center `}>
+          <div className="flex gap-2">
+            {Array.from({ length: 14 }, (_, rowIndex) => (
+              <div
+                className="min-w-[4.5rem] max-w-[4.5rem] "
+                onClick={() => setSelectedElement(data[rowIndex + 57])}
+                key={rowIndex}
+              >
+                {renderCell(
+                  data[rowIndex + 57].element,
+                  data[rowIndex + 57].name,
+                  data[rowIndex + 57].classification,
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div id="row-down-2" className={` flex w-full justify-center `}>
+          <div className="flex gap-2">
+            {Array.from({ length: 14 }, (_, rowIndex) => (
+              <div
+                className="min-w-[4.5rem] max-w-[4.5rem] "
+                onClick={() => setSelectedElement(data[rowIndex + 57])}
+                key={rowIndex}
+              >
+                {renderCell(
+                  data[rowIndex + 57].element,
+                  data[rowIndex + 57].name,
+                  data[rowIndex + 57].classification,
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/*  */}
       </div>
     </div>
   );
