@@ -54,11 +54,11 @@ function OrbitingSpheres({ selectedElement, theme }) {
         // }
 
         if (ref && refNucleus) {
-          const angle = (2 * Math.PI * i) / element + t;
+          const angle = (2 * Math.PI * i) / element + t / 4;
           ref.position.x = Math.cos(-angle) * radius;
           ref.position.y = Math.sin(-angle) * radius;
-          // refNucleus.position.x = Math.cos(angle) * -0.3;
-          // refNucleus.position.y = Math.sin(angle) * -0.3;
+          refNucleus.position.x = Math.cos(angle) * -0.3;
+          refNucleus.position.y = Math.sin(angle) * -0.3;
           // refNucleus.position.z = Math.cos(angle) * 0.5;
 
           // electron clouds
@@ -160,8 +160,8 @@ function OrbitingSpheres({ selectedElement, theme }) {
           return (
             <mesh key={index} position={[0, 0, 2]}>
               <meshStandardMaterial
-                color={theme.text_2}
-                emissive={theme.text_2}
+                color={theme.cellBG_2}
+                emissive={theme.cellBG_2}
                 emissiveIntensity={0.2}
               />
               <ringGeometry args={[radius - 0.02, radius + 0.02, 64]} />

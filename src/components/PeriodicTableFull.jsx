@@ -28,6 +28,8 @@ const PeriodicTableFull = ({ setElementState }) => {
         return theme.cellBG_6;
       case 'noble gas':
         return theme.cellBG_7;
+      case 'actinide':
+        return theme.cellBG_9;
       default:
         return theme.cellBG_8;
     }
@@ -44,7 +46,7 @@ const PeriodicTableFull = ({ setElementState }) => {
       <div style={{ color: cellTextTop }} className="text-2xl">
         {element}
       </div>
-      <div style={{ color: cellTextBottom }} className="text-[0.6rem]">
+      <div style={{ color: cellTextTop }} className="text-[0.6rem]">
         {name}
       </div>
     </div>
@@ -104,7 +106,7 @@ const PeriodicTableFull = ({ setElementState }) => {
           </h1>
         </div>
       </div>
-      <div className="mt-6  p-4 gap-5  overflow-y-auto   ">
+      <div className="mt-16  p-4 gap-5  overflow-hidden   ">
         <div id="row-1" className={` flex w-full justify-between gap-2 `}>
           {Array.from({ length: 2 }, (_, rowIndex) => (
             <div
@@ -255,6 +257,39 @@ const PeriodicTableFull = ({ setElementState }) => {
           </div>
         </div>
 
+        <div id="row-6" className={` flex w-full justify-between  gap-2 `}>
+          <div className="flex gap-2">
+            {Array.from({ length: 3 }, (_, rowIndex) => (
+              <div
+                onClick={() => setSelectedElement(data[rowIndex + 86])}
+                className="min-w-[4.5rem] max-w-[4.5rem] "
+                key={rowIndex}
+              >
+                {renderCell(
+                  data[rowIndex + 86].element,
+                  data[rowIndex + 86].name,
+                  data[rowIndex + 86].classification,
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="flex gap-2">
+            {Array.from({ length: 15 }, (_, rowIndex) => (
+              <div
+                className="min-w-[4.5rem] max-w-[4.5rem] "
+                onClick={() => setSelectedElement(data[rowIndex + 103])}
+                key={rowIndex}
+              >
+                {renderCell(
+                  data[rowIndex + 103].element,
+                  data[rowIndex + 103].name,
+                  data[rowIndex + 103].classification,
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/*  */}
 
         <div id="row-down-1" className={` flex w-full justify-center `}>
@@ -279,13 +314,13 @@ const PeriodicTableFull = ({ setElementState }) => {
             {Array.from({ length: 14 }, (_, rowIndex) => (
               <div
                 className="min-w-[4.5rem] max-w-[4.5rem] "
-                onClick={() => setSelectedElement(data[rowIndex + 57])}
+                onClick={() => setSelectedElement(data[rowIndex + 89])}
                 key={rowIndex}
               >
                 {renderCell(
-                  data[rowIndex + 57].element,
-                  data[rowIndex + 57].name,
-                  data[rowIndex + 57].classification,
+                  data[rowIndex + 89].element,
+                  data[rowIndex + 89].name,
+                  data[rowIndex + 89].classification,
                 )}
               </div>
             ))}
