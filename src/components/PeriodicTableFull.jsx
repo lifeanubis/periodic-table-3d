@@ -61,7 +61,7 @@ const PeriodicTableFull = ({ setElementState }) => {
   }, [selectedElement]);
 
   return (
-    <div className="h-screen p-4  flex flex-col gap-4 items-center justify-center  w-screen">
+    <div className="min-h-screen  p-4 overflow-auto lg:overflow-hidden flex flex-col gap-4 items-center justify-center  w-screen">
       <div className="absolute  top-2   justify-start w-full">
         <div>
           <button
