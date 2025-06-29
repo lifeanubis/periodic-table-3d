@@ -70,7 +70,7 @@ function ThemedApp() {
             {elementState === 'gas' && <GlobalBgScene theme={theme} />}
             {elementState === 'solid' && <GlobalSolidScene />}
           </div>
-          <div className="h-screen scale-[60%] lg:scale-100 absolute -left-72 -top-16  lg:left-0 lg:top-0 w-[160vw] lg:max-w-[100vw]">
+          <div className="h-screen  w-screen lg:max-w-[100vw]">
             <PeriodicTableFull setElementState={setElementState} />
           </div>
         </div>

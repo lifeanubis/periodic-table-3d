@@ -43,10 +43,13 @@ const PeriodicTableFull = ({ setElementState }) => {
       }}
       className={`p-1 w-full my-1 hover:scale-150  truncate text-center rounded-lg shadow-md  text-black font-medium hover:bg-orange-300 transition-colors cursor-pointer ${className}`}
     >
-      <div style={{ color: cellTextTop }} className="text-2xl">
+      <div style={{ color: cellTextTop }} className="lg:text-2xl text-lg ">
         {element}
       </div>
-      <div style={{ color: cellTextTop }} className="text-[0.6rem]">
+      <div
+        style={{ color: cellTextTop }}
+        className="lg:text-[0.6rem] text-[0.4rem]  "
+      >
         {name}
       </div>
     </div>
@@ -101,16 +104,16 @@ const PeriodicTableFull = ({ setElementState }) => {
         </div>
 
         <div>
-          <h1 className="text-lg h-72 w-1/2   font-bold text-center absolute left-52 top-0 ">
+          <h1 className="text-lg lg:h-72 h-60  lg:w-1/2 w-[45%]   font-bold text-center absolute left-52 top-0 ">
             <CardScene selectedElement={selectedElement} theme={theme} />
           </h1>
         </div>
       </div>
-      <div className="mt-16  p-4 gap-5  overflow-hidden   ">
+      <div className="mt-16  p-4 gap-5  overflow-hidden">
         <div id="row-1" className={` flex w-full justify-between gap-2 `}>
           {Array.from({ length: 2 }, (_, rowIndex) => (
             <div
-              className="min-w-[4.5rem] max-w-[4.5rem] "
+              className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
               key={rowIndex}
               onClick={() => setSelectedElement(data[rowIndex])}
             >
@@ -127,7 +130,7 @@ const PeriodicTableFull = ({ setElementState }) => {
           <div className="flex gap-2">
             {Array.from({ length: 2 }, (_, rowIndex) => (
               <div
-                className="min-w-[4.5rem] max-w-[4.5rem] "
+                className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
                 onClick={() => setSelectedElement(data[rowIndex + 2])}
                 key={rowIndex}
               >
@@ -142,7 +145,7 @@ const PeriodicTableFull = ({ setElementState }) => {
           <div className="flex gap-2">
             {Array.from({ length: 6 }, (_, rowIndex) => (
               <div
-                className="min-w-[4.5rem] max-w-[4.5rem] "
+                className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
                 onClick={() => setSelectedElement(data[rowIndex + 4])}
                 key={rowIndex}
               >
@@ -161,7 +164,7 @@ const PeriodicTableFull = ({ setElementState }) => {
             {Array.from({ length: 2 }, (_, rowIndex) => (
               <div
                 onClick={() => setSelectedElement(data[rowIndex + 10])}
-                className="min-w-[4.5rem] max-w-[4.5rem] "
+                className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
                 key={rowIndex}
               >
                 {renderCell(
@@ -175,7 +178,7 @@ const PeriodicTableFull = ({ setElementState }) => {
           <div className="flex gap-2">
             {Array.from({ length: 6 }, (_, rowIndex) => (
               <div
-                className="min-w-[4.5rem] max-w-[4.5rem] "
+                className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
                 onClick={() => setSelectedElement(data[rowIndex + 12])}
                 key={rowIndex}
               >
@@ -193,7 +196,7 @@ const PeriodicTableFull = ({ setElementState }) => {
           <div className="flex gap-2">
             {Array.from({ length: 18 }, (_, rowIndex) => (
               <div
-                className="min-w-[4.5rem] max-w-[4.5rem] "
+                className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
                 onClick={() => setSelectedElement(data[rowIndex + 18])}
                 key={rowIndex}
               >
@@ -210,7 +213,7 @@ const PeriodicTableFull = ({ setElementState }) => {
           <div className="flex gap-2">
             {Array.from({ length: 18 }, (_, rowIndex) => (
               <div
-                className="min-w-[4.5rem] max-w-[4.5rem] "
+                className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
                 onClick={() => setSelectedElement(data[rowIndex + 36])}
                 key={rowIndex}
               >
@@ -229,7 +232,7 @@ const PeriodicTableFull = ({ setElementState }) => {
             {Array.from({ length: 3 }, (_, rowIndex) => (
               <div
                 onClick={() => setSelectedElement(data[rowIndex + 54])}
-                className="min-w-[4.5rem] max-w-[4.5rem] "
+                className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
                 key={rowIndex}
               >
                 {renderCell(
@@ -243,7 +246,7 @@ const PeriodicTableFull = ({ setElementState }) => {
           <div className="flex gap-2">
             {Array.from({ length: 15 }, (_, rowIndex) => (
               <div
-                className="min-w-[4.5rem] max-w-[4.5rem] "
+                className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
                 onClick={() => setSelectedElement(data[rowIndex + 71])}
                 key={rowIndex}
               >
@@ -262,7 +265,7 @@ const PeriodicTableFull = ({ setElementState }) => {
             {Array.from({ length: 3 }, (_, rowIndex) => (
               <div
                 onClick={() => setSelectedElement(data[rowIndex + 86])}
-                className="min-w-[4.5rem] max-w-[4.5rem] "
+                className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
                 key={rowIndex}
               >
                 {renderCell(
@@ -276,7 +279,7 @@ const PeriodicTableFull = ({ setElementState }) => {
           <div className="flex gap-2">
             {Array.from({ length: 15 }, (_, rowIndex) => (
               <div
-                className="min-w-[4.5rem] max-w-[4.5rem] "
+                className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
                 onClick={() => setSelectedElement(data[rowIndex + 103])}
                 key={rowIndex}
               >
@@ -296,7 +299,7 @@ const PeriodicTableFull = ({ setElementState }) => {
           <div className="flex gap-2">
             {Array.from({ length: 14 }, (_, rowIndex) => (
               <div
-                className="min-w-[4.5rem] max-w-[4.5rem] "
+                className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
                 onClick={() => setSelectedElement(data[rowIndex + 57])}
                 key={rowIndex}
               >
@@ -313,7 +316,7 @@ const PeriodicTableFull = ({ setElementState }) => {
           <div className="flex gap-2">
             {Array.from({ length: 14 }, (_, rowIndex) => (
               <div
-                className="min-w-[4.5rem] max-w-[4.5rem] "
+                className="min-w-[2.5rem] lg:min-w-[4.5rem] lg:max-w-[4.5rem] max-w-[2.5rem] "
                 onClick={() => setSelectedElement(data[rowIndex + 89])}
                 key={rowIndex}
               >
