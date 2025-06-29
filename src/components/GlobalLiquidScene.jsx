@@ -61,13 +61,14 @@ const GlobalLiquidScene = () => {
     <Canvas
       camera={{ position: [0, 5, 10], fov: 50 }}
       style={{
-        width: '100vw',
+        // width: '100vw',
         height: '100vh',
         position: 'fixed',
         top: 0,
         left: 0,
         zIndex: -1,
       }}
+      className="min-w-[170vw]  lg:w-screen  "
     >
       <ambientLight intensity={0.7} />
       {/* <MemoizedWaterPlane /> */}

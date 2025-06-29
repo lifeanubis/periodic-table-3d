@@ -64,13 +64,13 @@ function ThemedApp() {
           transition: 'background 5s ease',
         }}
       >
-        <div className="flex justify-center overflow-auto lg:overflow-hidden  items-center backdrop-blur-2xl w-screen h-screen">
-          <div className="h-screen w-screen ">
+        <div className="flex  overflow-auto lg:overflow-hidden   items-center backdrop-blur-2xl  min-h-screen">
+          <div className="h-screen absolute    ">
             {elementState === 'liquid' && <GlobalLiquidScene />}
             {elementState === 'gas' && <GlobalBgScene theme={theme} />}
             {elementState === 'solid' && <GlobalSolidScene />}
           </div>
-          <div className="h-screen w-screen ">
+          <div className="h-screen w-[200vw] lg:max-w-[100vw]">
             <PeriodicTableFull setElementState={setElementState} />
           </div>
         </div>

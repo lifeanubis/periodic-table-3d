@@ -89,13 +89,14 @@ export default function GlobalBgScene({ theme }) {
     <Canvas
       camera={{ position: [0, 0, 20], fov: 60 }}
       style={{
-        width: '100vw',
+        // width: '100vw',
         height: '100vh',
         position: 'fixed',
         top: 0,
         left: 0,
         zIndex: -1,
       }}
+      className="min-w-[170vw] lg:max-w-[100vw]  "
     >
       <ambientLight intensity={1} />
       <Clouds ref={cloudRef} material={undefined}>

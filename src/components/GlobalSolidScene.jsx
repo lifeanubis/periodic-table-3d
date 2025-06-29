@@ -42,13 +42,14 @@ const GlobalSolidScene = () => {
     <Canvas
       camera={{ position: [0, 0, 10], fov: 50 }}
       style={{
-        width: '100vw',
+        // width: '100vw',
         height: '100vh',
         position: 'fixed',
         top: 0,
         left: 0,
         zIndex: -1,
       }}
+      className="min-w-[170vw]  lg:w-screen  "
     >
       <ambientLight intensity={0.7} />
       <directionalLight position={[5, 5, 5]} intensity={1.2} />
