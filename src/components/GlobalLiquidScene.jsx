@@ -72,7 +72,7 @@ const GlobalLiquidScene = () => {
     >
       <ambientLight intensity={0.7} />
       {/* <MemoizedWaterPlane /> */}
-      <MemoizedWaterPlane position={[2, 0, 0]} />
+      <MemoizedWaterPlane position={[-6, 0, 0]} />
       <MemoizedWaterPlane position={[-4, 0, -2]} />
     </Canvas>
   );

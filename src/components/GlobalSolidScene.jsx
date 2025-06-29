@@ -14,11 +14,9 @@ function Icosahedrons() {
   });
   // Example positions for multiple icosahedrons
   const positions = [
-    [0, 0, 0],
+    [-1, 3, 0],
     [-8, 0, 0],
-    [8, -5, 0],
-    [-7, -3.5, 0],
-    [2, 2, 2],
+    [2, -2, 2],
     [-2, -2, -2],
   ];
   return (
